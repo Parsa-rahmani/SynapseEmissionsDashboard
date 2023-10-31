@@ -12,11 +12,11 @@ def index():
 def get_emissions():
     values = get_synapse_values()
     result_text = ""
-    total_emissions = 140,000
+    total_emissions = 140000
     for value in values:
         result_text += f"Monthly $SYN emissions on {value['network_name']}: {value['value']}<br>"
         total_emissions += float(value['value'].replace(',', ''))
-    result_text += f"Total Monthly Emissions: {total_emissions:,.0f}"
+    result_text += f"Total Monthly Emissions with 140,000 monthly bribes: {total_emissions:,.0f}"
     return result_text
 
 if __name__ == '__main__':
