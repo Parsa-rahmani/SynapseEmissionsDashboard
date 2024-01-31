@@ -14,7 +14,7 @@ chains_info = [
         'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
         'rpc_url': 'https://1rpc.io/bnb'
     },
-     {
+    {
         'network_name': 'Arbitrum',
         'contract_address': '0x73186f2Cf2493f20836b17b21ae79fc12934E207',
         'rpc_url': 'https://1rpc.io/arb'
@@ -52,7 +52,11 @@ chains_info = [
         'contract_address': '0xfFC2d603fde1F99ad94026c00B6204Bb9b8c36E9',
         'rpc_url': 'https://1rpc.io/base'
     },
-
+    {
+        'network_name': 'Canto',
+        'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
+        'rpc_url': 'https://mainnode.plexnode.org:8545'
+    },
     {
         'network_name': 'Metis',
         'contract_address': '0xaB0D8Fc46249DaAcd5cB36c5F0bC4f0DAF34EBf5',
@@ -79,7 +83,7 @@ for chain in chains_info:
     contract = connection.eth.contract(address=chain['contract_address'], abi=contract_abi)
     synapse_value_per_second = contract.functions.synapsePerSecond().call()
     # Convert to monthly and add commas
-    synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60)/10**18)
+    synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 7 * 24 * 60 * 60)/10**18)
     synapse_values.append({
         'network_name': chain['network_name'],
         'value': synapse_value_per_month,
@@ -91,7 +95,7 @@ def get_synapse_values():
         contract = connection.eth.contract(address=chain['contract_address'], abi=contract_abi)
         synapse_value_per_second = contract.functions.synapsePerSecond().call()
         # Convert to monthly and add commas
-        synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60)/10**18)
+        synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 7 * 24 * 60 * 60)/10**18)
         synapse_values.append({
             'network_name': chain['network_name'],
             'value': synapse_value_per_month,
