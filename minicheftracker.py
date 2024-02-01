@@ -55,7 +55,7 @@ chains_info = [
     {
         'network_name': 'Canto',
         'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
-        'rpc_url': 'https://mainnode.plexnode.org:8545'
+        'rpc_url': 'https://rpc.omnirpc.io/confirmations/1/rpc/7700'
     },
     {
         'network_name': 'Metis',
