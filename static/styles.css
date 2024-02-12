@@ -1,0 +1,31 @@
+body {
+  background-color: rgb(22, 22, 22);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.emission-info {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.emission-value {
+  color: rgb(185, 115, 250);
+  text-shadow: 0px 0px 10px rgb(185, 115, 250);
+}
+
+.footer {
+  font-size: 12px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
