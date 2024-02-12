@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #161616;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .title {
+            font-size: 24px;
+            color: rgb(185, 115, 250);
+            animation: glow 1s infinite alternate;
+            margin-bottom: 30px; /* Add more space between title and body */
+        }
+        .content {
+            text-align: center;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgb(185, 115, 250);
+            }
+            to {
+                text-shadow: 0 0 20px rgb(185, 115, 250);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">$SYN Emissions Dashboard</div>
+    <div class="content">
+
+        <div id="emissions"></div>
+    </div>
+    <div class="footer">Made for Syn-Apes by @Parsa2400</div>
+    <script>
+        window.addEventListener('load', function () {
+            fetch('/get_emissions')
+                .then((response) => response.text())
+                .then((data) => {
+                    document.getElementById('emissions').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
