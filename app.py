@@ -14,9 +14,9 @@ def get_emissions():
     result_text = ""
     total_emissions = 0
     for value in values:
-        result_text += f"Weekly $SYN emissions on {value['network_name']}: {value['value']}<br>"
+        result_text += f"Monthly $SYN emissions on {value['network_name']}: {value['value']}<br>"
         total_emissions += float(value['value'].replace(',', ''))
-    result_text += f"Total Weekly Emissions: {total_emissions:,.0f}"
+    result_text += f"Total Monthly Emissions: {total_emissions:,.0f}"
     return result_text
 
 if __name__ == '__main__':
