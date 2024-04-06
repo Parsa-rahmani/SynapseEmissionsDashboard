@@ -77,7 +77,7 @@ chains_info = [
     {
         'network_name': 'Blast',
         'contract_address': '0x3100dC8464A8523306c3C5034de24a8927d6E590',
-        'rpc_url': 'https://rpc.blastblockchain.com'
+        'rpc_url': 'https://rpc.blast.io'
     },
 ]
 
