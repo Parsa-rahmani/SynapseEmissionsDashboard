@@ -1,4 +1,6 @@
-
+import logging
+import requests 
+from web3.exceptions import Web3Exception
 from web3 import Web3
 import json
 synapse_values = []
