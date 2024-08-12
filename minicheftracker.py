@@ -25,11 +25,6 @@ chains_info = [
         'rpc_url': 'https://1rpc.io/matic'
     },
 
-    {
-        'network_name': 'Aurora',
-        'contract_address': '0x809DC529f07651bD43A172e8dB6f4a7a0d771036',
-        'rpc_url': 'https://1rpc.io/aurora'
-    },
 
     {
         'network_name': 'Fantom',
