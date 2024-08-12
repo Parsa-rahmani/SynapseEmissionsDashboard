@@ -38,11 +38,11 @@ chains_info = [
         'rpc_url': 'https://optimism.llamarpc.com'
     },
 
-    {
-        'network_name': 'Canto',
-        'contract_address': '0x93124c923dA389Bc0f13840fB822Ce715ca67ED6',
-        'rpc_url': 'https://canto.slingshot.finance'
-    },
+    # {
+    #     'network_name': 'Canto',
+    #     'contract_address': '0x93124c923dA389Bc0f13840fB822Ce715ca67ED6',
+    #     'rpc_url': 'https://canto.slingshot.finance'
+    # },
 
     {
         'network_name': 'Avalanche',
@@ -93,45 +93,38 @@ for chain in chains_info:
         'value': synapse_value_per_month,
     })
     
-
 def get_synapse_values():
     synapse_values = []
     for chain in chains_info:
         try:
-            connection = Web3(Web3.HTTPProvider(chain['rpc_url'].strip()))  # Strip any extra whitespace
+            connection = Web3(Web3.HTTPProvider(chain['rpc_url']))
             contract = connection.eth.contract(address=chain['contract_address'], abi=contract_abi)
             synapse_value_per_second = contract.functions.synapsePerSecond().call()
             # Convert to monthly and add commas
-            synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60) / 10**18)
+            synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60)/10**18)
             synapse_values.append({
                 'network_name': chain['network_name'],
                 'value': synapse_value_per_month,
             })
         except requests.exceptions.HTTPError as e:
-            if e.response.status_code == 503:
-                logger.error(f"RPC error (503 Service Unavailable) on {chain['network_name']}: {e}")
-                synapse_values.append({
-                    'network_name': chain['network_name'],
-                    'value': "RPC error"
-                })
-            else:
-                logger.error(f"RPC error on {chain['network_name']}: {e}")
-                synapse_values.append({
-                    'network_name': chain['network_name'],
-                    'value': "RPC error"
-                })
-        except (requests.exceptions.ConnectionError, Web3Exception) as e:
-            logger.error(f"Connection error on {chain['network_name']}: {e}")
+            logging.error(f"HTTPError occurred for {chain['network_name']}: {str(e)}")
             synapse_values.append({
                 'network_name': chain['network_name'],
-                'value': "RPC error"
+                'value': 'RPC error'
+            })
+        except requests.exceptions.ConnectionError as e:
+            logging.error(f"ConnectionError occurred for {chain['network_name']}: {str(e)}")
+            synapse_values.append({
+                'network_name': chain['network_name'],
+                'value': 'RPC error'
             })
         except Exception as e:
-            logger.error(f"Unexpected error on {chain['network_name']}: {e}")
+            logging.error(f"Unexpected error occurred for {chain['network_name']}: {str(e)}")
             synapse_values.append({
                 'network_name': chain['network_name'],
-                'value': "Unexpected error"
+                'value': 'RPC error'
             })
     return synapse_values
+
 
 
