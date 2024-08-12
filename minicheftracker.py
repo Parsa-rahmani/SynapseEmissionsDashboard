@@ -93,6 +93,7 @@ for chain in chains_info:
         'value': synapse_value_per_month,
     })
     
+
 def get_synapse_values():
     synapse_values = []
     for chain in chains_info:
@@ -124,6 +125,12 @@ def get_synapse_values():
             synapse_values.append({
                 'network_name': chain['network_name'],
                 'value': "RPC error"
+            })
+        except Exception as e:
+            logger.error(f"Unexpected error on {chain['network_name']}: {e}")
+            synapse_values.append({
+                'network_name': chain['network_name'],
+                'value': "Unexpected error"
             })
     return synapse_values
 
