@@ -7,51 +7,50 @@ chains_info = [
     {
         'network_name': 'Ethereum Mainnet',
         'contract_address': '0xd10eF2A513cEE0Db54E959eF16cAc711470B62cF',
-        'rpc_url': 'https://1rpc.io/eth'
+        'rpc_url': 'https://eth.llamarpc.com'
     },
     {
         'network_name': 'BSC',
         'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
-        'rpc_url': 'https://1rpc.io/bnb'
+        'rpc_url': 'https://binance.llamarpc.com'
     },
-    # {
-    #     'network_name': 'Arbitrum',
-    #     'contract_address': '0x73186f2Cf2493f20836b17b21ae79fc12934E207',
-    #     'rpc_url': 'https://1rpc.io/arb'
-    # },
+    {
+        'network_name': 'Arbitrum',
+        'contract_address': '0x73186f2Cf2493f20836b17b21ae79fc12934E207',
+        'rpc_url': 'https://arbitrum.llamarpc.com	'
+    },
     {
         'network_name': 'Polygon',
         'contract_address': '0x7875Af1a6878bdA1C129a4e2356A3fD040418Be5',
-        'rpc_url': 'https://1rpc.io/matic'
+        'rpc_url': 'https://polygon.llamarpc.com'
     },
-
-
     {
-        'network_name': 'Fantom',
-        'contract_address': '0xaeD5b25BE1c3163c907a471082640450F928DDFE',
-        'rpc_url': 'https://1rpc.io/ftm'
+        'network_name': 'Aurora',
+        'contract_address': '0x809DC529f07651bD43A172e8dB6f4a7a0d771036',
+        'rpc_url': 'https://aurora-mainnet.gateway.tatum.io'
     },
+
     {
         'network_name': 'Optimism',
         'contract_address': '0xe8c610fcb63A4974F02Da52f0B4523937012Aaa0',
-        'rpc_url': 'https://1rpc.io/op'
+        'rpc_url': 'https://optimism.llamarpc.com'
     },
 
     {
         'network_name': 'Canto',
         'contract_address': '0x93124c923dA389Bc0f13840fB822Ce715ca67ED6',
-        'rpc_url': 'https://mainnode.plexnode.org:8545'
+        'rpc_url': 'https://canto.slingshot.finance'
     },
 
     {
         'network_name': 'Avalanche',
         'contract_address': '0x3a01521F8E7F012eB37eAAf1cb9490a5d9e18249',
-        'rpc_url': 'https://1rpc.io/avax/c'
+        'rpc_url': 'https://avax.meowrpc.com'
     },
     {
         'network_name': 'Base',
         'contract_address': '0xfFC2d603fde1F99ad94026c00B6204Bb9b8c36E9',
-        'rpc_url': 'https://1rpc.io/base'
+        'rpc_url': 'https://base.llamarpc.com'
     },
 
     {
@@ -92,13 +91,21 @@ for chain in chains_info:
 def get_synapse_values():
     synapse_values = []
     for chain in chains_info:
-        connection = Web3(Web3.HTTPProvider(chain['rpc_url']))
-        contract = connection.eth.contract(address=chain['contract_address'], abi=contract_abi)
-        synapse_value_per_second = contract.functions.synapsePerSecond().call()
-        # Convert to monthly and add commas
-        synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60)/10**18)
-        synapse_values.append({
-            'network_name': chain['network_name'],
-            'value': synapse_value_per_month,
-        })
+        try:
+            connection = Web3(Web3.HTTPProvider(chain['rpc_url']))
+            contract = connection.eth.contract(address=chain['contract_address'], abi=contract_abi)
+            synapse_value_per_second = contract.functions.synapsePerSecond().call()
+            synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60) / 10**18)
+            synapse_values.append({
+                'network_name': chain['network_name'],
+                'value': synapse_value_per_month,
+            })
+        except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError) as e:
+            print(f"RPC error occurred on {chain['network_name']}: {e}")
+            synapse_values.append({
+                'network_name': chain['network_name'],
+                'value': "RPC error"
+            })
+    return synapse_values
+
     return synapse_values
