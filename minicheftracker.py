@@ -94,37 +94,27 @@ for chain in chains_info:
     })
     
 def get_synapse_values():
-    synapse_values = []
+    results = []
+    
     for chain in chains_info:
+        network_name = chain['network_name']
+        rpc_url = chain['rpc_url']
+        contract_address = chain['contract_address']
+        
         try:
-            connection = Web3(Web3.HTTPProvider(chain['rpc_url']))
-            contract = connection.eth.contract(address=chain['contract_address'], abi=contract_abi)
-            synapse_value_per_second = contract.functions.synapsePerSecond().call()
-            # Convert to monthly and add commas
-            synapse_value_per_month = "{:,.0f}".format((synapse_value_per_second * 30 * 24 * 60 * 60)/10**18)
-            synapse_values.append({
-                'network_name': chain['network_name'],
-                'value': synapse_value_per_month,
-            })
-        except requests.exceptions.HTTPError as e:
-            logging.error(f"HTTPError occurred for {chain['network_name']}: {str(e)}")
-            synapse_values.append({
-                'network_name': chain['network_name'],
-                'value': 'RPC error'
-            })
-        except requests.exceptions.ConnectionError as e:
-            logging.error(f"ConnectionError occurred for {chain['network_name']}: {str(e)}")
-            synapse_values.append({
-                'network_name': chain['network_name'],
-                'value': 'RPC error'
-            })
-        except Exception as e:
-            logging.error(f"Unexpected error occurred for {chain['network_name']}: {str(e)}")
-            synapse_values.append({
-                'network_name': chain['network_name'],
-                'value': 'RPC error'
-            })
-    return synapse_values
-
+            web3 = Web3(Web3.HTTPProvider(rpc_url))
+            if web3.isConnected():
+                contract = web3.eth.contract(address=contract_address, abi=contract_abi)
+                synapse_value_per_second = contract.functions.synapsePerSecond().call()
+                monthly_emissions = synapse_value_per_second * 30 * 24 * 60 * 60  # calculate monthly emissions
+                results.append({'network_name': network_name, 'value': f"{monthly_emissions:,.0f}"})
+            else:
+                results.append({'network_name': network_name, 'value': 'RPC connection error'})
+        
+        except Web3Exception as e:
+            logging.error(f"Error fetching data from {network_name}: {e}")
+            results.append({'network_name': network_name, 'value': 'RPC error'})
+    
+    return results
 
 
