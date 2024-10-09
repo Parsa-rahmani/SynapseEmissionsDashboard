@@ -11,7 +11,7 @@ chains_info = [
         'network_name': 'BSC',
         'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
         'rpc_url': 'https://binance.llamarpc.com'
-    }
+    },
 
     {
         'network_name': 'Arbitrum',
