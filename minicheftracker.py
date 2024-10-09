@@ -24,16 +24,10 @@ chains_info = [
         'rpc_url': 'https://1rpc.io/matic'
     },
     {
-       'network_name': 'Aurora',
-       'contract_address': '0x809DC529f07651bD43A172e8dB6f4a7a0d771036',
-       'rpc_url': 'https://mainnet.aurora.dev'
+        'network_name': 'Optimism',
+        'contract_address': '0xe8c610fcb63A4974F02Da52f0B4523937012Aaa0',
+        'rpc_url': 'https://optimism.llamarpc.com'
     }
-
-    # {
-    #     'network_name': 'Optimism',
-    #     'contract_address': '0xe8c610fcb63A4974F02Da52f0B4523937012Aaa0',
-    #     'rpc_url': 'https://optimism.llamarpc.com'
-    # },
 
     # # {
     # #     'network_name': 'Canto',
