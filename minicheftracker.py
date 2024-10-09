@@ -33,12 +33,12 @@ chains_info = [
          'network_name': 'Avalanche',
          'contract_address': '0x3a01521F8E7F012eB37eAAf1cb9490a5d9e18249',
          'rpc_url': 'https://1rpc.io/avax/c'
-     }
-    # {
-    #     'network_name': 'Base',
-    #     'contract_address': '0xfFC2d603fde1F99ad94026c00B6204Bb9b8c36E9',
-    #     'rpc_url': 'https://base.llamarpc.com'
-    # },
+     },
+    {
+        'network_name': 'Base',
+        'contract_address': '0xfFC2d603fde1F99ad94026c00B6204Bb9b8c36E9',
+        'rpc_url': 'https://1rpc.io/base'
+    }
 
     # {
     #     'network_name': 'Metis',
