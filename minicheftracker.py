@@ -38,13 +38,13 @@ chains_info = [
         'network_name': 'Base',
         'contract_address': '0xfFC2d603fde1F99ad94026c00B6204Bb9b8c36E9',
         'rpc_url': 'https://1rpc.io/base'
-    }
+    },
 
-    # {
-    #     'network_name': 'Metis',
-    #     'contract_address': '0xaB0D8Fc46249DaAcd5cB36c5F0bC4f0DAF34EBf5',
-    #     'rpc_url': 'https://metis-mainnet.public.blastapi.io'
-    # },
+    {
+        'network_name': 'Metis',
+        'contract_address': '0xaB0D8Fc46249DaAcd5cB36c5F0bC4f0DAF34EBf5',
+        'rpc_url': 'https://metis.drpc.org'
+    }
     # {
     #     'network_name': 'Moonriver',
     #     'contract_address': '0x432036208d2717394d2614d6697c46DF3Ed69540',
