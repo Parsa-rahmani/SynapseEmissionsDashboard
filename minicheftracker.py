@@ -11,11 +11,11 @@ chains_info = [
         'contract_address': '0xd10eF2A513cEE0Db54E959eF16cAc711470B62cF',
         'rpc_url': 'https://mainnet.gateway.tenderly.co'
      }
-    # {
-    #     'network_name': 'BSC',
-    #     'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
-    #     'rpc_url': 'https://binance.llamarpc.com'
-    # },
+    {
+        'network_name': 'BSC',
+        'contract_address': '0x8F5BBB2BB8c2Ee94639E55d5F41de9b4839C1280',
+        'rpc_url': 'https://binance.llamarpc.com'
+    },
     # {
     #     'network_name': 'Arbitrum',
     #     'contract_address': '0x73186f2Cf2493f20836b17b21ae79fc12934E207',
