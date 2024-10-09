@@ -22,12 +22,12 @@ chains_info = [
         'network_name': 'Polygon',
         'contract_address': '0x7875Af1a6878bdA1C129a4e2356A3fD040418Be5',
         'rpc_url': 'https://1rpc.io/matic'
+    },
+    {
+       'network_name': 'Aurora',
+       'contract_address': '0x809DC529f07651bD43A172e8dB6f4a7a0d771036',
+       'rpc_url': 'https://mainnet.aurora.dev'
     }
-    # #{
-    # #    'network_name': 'Aurora',
-    # #    'contract_address': '0x809DC529f07651bD43A172e8dB6f4a7a0d771036',
-    # #    'rpc_url': 'https://aurora-mainnet.gateway.tatum.io'
-    # #},
 
     # {
     #     'network_name': 'Optimism',
