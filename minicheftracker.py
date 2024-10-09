@@ -44,12 +44,12 @@ chains_info = [
         'network_name': 'Metis',
         'contract_address': '0xaB0D8Fc46249DaAcd5cB36c5F0bC4f0DAF34EBf5',
         'rpc_url': 'https://metis.drpc.org'
+    },
+    {
+        'network_name': 'Moonriver',
+        'contract_address': '0x432036208d2717394d2614d6697c46DF3Ed69540',
+        'rpc_url': 'https://moonriver.drpc.org'
     }
-    # {
-    #     'network_name': 'Moonriver',
-    #     'contract_address': '0x432036208d2717394d2614d6697c46DF3Ed69540',
-    #     'rpc_url': 'https://moonriver.public.blastapi.io'
-    # },
     # {
     #     'network_name': 'Boba',
     #     'contract_address': '0xd5609cD0e1675331E4Fb1d43207C8d9D83AAb17C',
