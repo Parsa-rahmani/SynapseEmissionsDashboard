@@ -46,15 +46,10 @@ chains_info = [
         'rpc_url': 'https://metis.drpc.org'
     },
     {
-        'network_name': 'Moonriver',
-        'contract_address': '0x432036208d2717394d2614d6697c46DF3Ed69540',
-        'rpc_url': 'https://moonriver.drpc.org'
+        'network_name': 'Boba',
+        'contract_address': '0xd5609cD0e1675331E4Fb1d43207C8d9D83AAb17C',
+        'rpc_url': 'https://boba-eth.drpc.org'
     }
-    # {
-    #     'network_name': 'Boba',
-    #     'contract_address': '0xd5609cD0e1675331E4Fb1d43207C8d9D83AAb17C',
-    #     'rpc_url': 'https://mainnet.boba.network'
-    # },
     # {
     #     'network_name': 'Blast',
     #     'contract_address': '0x3100dC8464A8523306c3C5034de24a8927d6E590',
