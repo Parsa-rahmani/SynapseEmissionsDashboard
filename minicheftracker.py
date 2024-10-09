@@ -27,19 +27,13 @@ chains_info = [
         'network_name': 'Optimism',
         'contract_address': '0xe8c610fcb63A4974F02Da52f0B4523937012Aaa0',
         'rpc_url': 'https://optimism.llamarpc.com'
-    }
+    },
 
-    # # {
-    # #     'network_name': 'Canto',
-    # #     'contract_address': '0x93124c923dA389Bc0f13840fB822Ce715ca67ED6',
-    # #     'rpc_url': 'https://canto.slingshot.finance'
-    # # },
-
-    # {
-    #     'network_name': 'Avalanche',
-    #     'contract_address': '0x3a01521F8E7F012eB37eAAf1cb9490a5d9e18249',
-    #     'rpc_url': 'https://avax.meowrpc.com'
-    # },
+    {
+         'network_name': 'Avalanche',
+         'contract_address': '0x3a01521F8E7F012eB37eAAf1cb9490a5d9e18249',
+         'rpc_url': 'https://1rpc.io/avax/c'
+     }
     # {
     #     'network_name': 'Base',
     #     'contract_address': '0xfFC2d603fde1F99ad94026c00B6204Bb9b8c36E9',
